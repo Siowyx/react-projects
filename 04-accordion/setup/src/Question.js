@@ -1,7 +1,21 @@
-import React, { useState } from 'react';
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-const Question = () => {
-  return <h2>question component</h2>;
+import React, { useState } from "react";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+const Question = ({ title, info }) => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  return (
+    <>
+      <article className="question">
+        <header>
+          <h4>{title}</h4>
+          <button className="btn" onClick={() => setIsClicked(!isClicked)}>
+            {isClicked ? <AiOutlineMinus /> : <AiOutlinePlus />}
+          </button>
+        </header>
+        <p>{isClicked && info}</p>
+      </article>
+    </>
+  );
 };
 
 export default Question;
